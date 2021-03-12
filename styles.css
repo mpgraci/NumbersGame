@@ -1,0 +1,158 @@
+body {    
+    font-size: 30px;    
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    
+    background: white;
+    background-image: linear-gradient(rgb(169, 235, 252) .1em, transparent .1em), linear-gradient(90deg, rgb(169, 235, 252) .1em, transparent .1em);
+    background-size: 1.7em 1.7em;
+
+}
+#container {
+    width: 100%;
+    height: 100%;
+    margin-top: 50px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-evenly;
+}
+h2 {    
+    margin-bottom: -5px;
+}
+label {
+    font-size: 35px;
+}
+.center {
+    margin: auto;    
+  }
+table {
+    table-layout: fixed;
+    width: 600px;
+    font-size: 50px;
+    margin-bottom: 20px;
+}
+table td {
+    border: 2px solid black;
+    border-radius: 5px;
+    background-color: rgb(48,68,137);
+    color: white;
+    font-weight: bold;
+}
+button {
+    width: 120px;
+    font-size: 35px;
+    border-radius: 10px;
+    
+}
+#target {
+    border: 2px solid black;
+    border-radius: 5px;
+    width: 200px;
+    font-size: 100px;
+    background-color: rgb(43,33,163);
+    color: white;
+}
+#large-num-selector {
+    font-size: 40px;
+    border-radius: 5px;
+    margin-right: 20px;    
+}
+.wrapper {      
+    margin-top: -30px;  
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    justify-self: center;
+    text-align: center;    
+        
+}
+#target-div{
+    background-color: rgb(73,104,155);    
+    padding-bottom: 20px;
+    border: 1px solid black;
+    border-radius: 15px; 
+    margin-bottom: 20px;
+    width: 650px;
+}
+#input-div {
+    background-color: rgb(255, 255, 255);    
+    color: black;
+    padding-bottom: 20px;
+    border: 1px solid black;
+    border-radius: 15px; 
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 650px;
+    position: absolute; bottom: 0px; 
+    margin-bottom: 20px;      
+}
+#header-group {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+#table-group {
+    display: flex;
+    justify-content: center;
+}
+#button-group {
+    margin-top: 20px;
+}
+#seconds {
+    margin-bottom: 20px;
+    font-size: 40px;
+    width: 90px;    
+    border-radius: 5px;
+}
+#timer {
+    font-size: 70px;    
+}
+#timer-wrapper {
+    display: flex;
+    flex-direction: column;
+    text-align: center;    
+    justify-self: left;   
+    margin-right: auto;
+    margin-left: 20px;    
+    visibility: hidden;
+    /*visibility: visible;*/
+
+    width: 350px;
+    background-color: white;
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 15px;        
+}
+
+#timer-wrapper label {
+    font-size: 40px;    
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button {  
+   opacity: 1;
+}
+#rules-wrapper {     
+    text-align: left;         
+    justify-self: right;    
+    margin-left: auto;
+    margin-right: 20px;
+    visibility: hidden;
+
+    
+    font-size: 20px;    
+    width: 350px;
+    display: inline-block;    
+    background-color: white;
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 15px;    
+}
+#button-div {
+    position: absolute; bottom: 0px; 
+    margin: 20px;    
+}
+#hard-mode {
+    width: 30px;
+    height: 30px;
+}
