@@ -24,6 +24,8 @@ const demoTarget = [403];
 let selectedNum = [];
 let timeIsRunning = false;
 
+playBtn.disabled = true;
+
 //random num generators 
 function getRandomInt(min, max) {
     min = Math.ceil(min);
@@ -121,6 +123,7 @@ resetBtn.addEventListener('click', () => {
     timerContainer.style.backgroundColor = "white"
     timerSetBtn.disabled = false;
     startTimeBtn.style.backgroundColor = "lightcoral"
+    playBtn.disabled = true;
     resetTimer();    
 });
 //sets chosen numbers
@@ -136,6 +139,7 @@ setBtn.addEventListener('click', () => {
         numTableRow.cells[i].innerHTML = selectedNum[i];        
     }        
     setBtn.disabled = true;
+    playBtn.disabled = false;
     largeNumSelector.disabled = true;         
 });
 startTimeBtn.addEventListener('click', () => {        
@@ -193,7 +197,7 @@ timerSetBtn.addEventListener('click', () => {
     display.textContent = minutes + ":" + seconds;    
     timer = timerDuration.value;
 });
-//togles hard mode
+//toggles hard mode
 hardMode.addEventListener('click', () =>{
     const body = document.getElementsByTagName('body')[0];
     if (hardMode.checked === true){

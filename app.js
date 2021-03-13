@@ -3,6 +3,7 @@ const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
 const path = require("path");
 const url = require("url");
+const Menu = electron.Menu
 
 let win;
 
@@ -23,7 +24,23 @@ function createWindow() {
     //win.setMenuBarVisibility(false);
     win.on('closed', () => {win = null;})    
 }
-app.on('ready', createWindow);
+app.on('ready', () =>{
+    createWindow();
+
+    const template = [
+        {
+            label: 'View',
+            submenu: [
+                {role: 'zoomIn'},
+                {role: 'zoomOut'},
+                {type: 'separator'},
+                {role: 'resetZoom'}
+            ]
+        }
+    ]
+    const menu = Menu.buildFromTemplate(template);
+    Menu.setApplicationMenu(menu);
+});
 
 //Mac
 app.on('window-all-closed', () => {
