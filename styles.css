@@ -96,15 +96,6 @@ input[type=number]::-webkit-outer-spin-button {
     margin-top: 20px;
 }
 /*Timer*/
-#timer-duration {
-    margin-bottom: 20px;
-    font-size: 40px;
-    width: 90px;    
-    border-radius: 5px;
-}
-#timer {
-    font-size: 70px;    
-}
 #timer-wrapper {
     display: flex;
     flex-direction: column;
@@ -123,6 +114,18 @@ input[type=number]::-webkit-outer-spin-button {
 }
 #timer-wrapper label {
     font-size: 40px;    
+}
+#timer-duration {
+    margin-bottom: 20px;
+    font-size: 40px;
+    width: 90px;    
+    border-radius: 5px;
+}
+#timer {
+    font-size: 70px;    
+}
+#startTime-btn {
+    background-color: lightcoral;
 }
 /*Rules*/
 #rules-container {     

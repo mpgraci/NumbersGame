@@ -1,10 +1,3 @@
-let hardLargeNum = [12, 37, 62, 87];
-let largeNum = [25, 50, 75, 100];
-let smallNum = [1 , 1 , 2 , 2 , 3 , 3 , 4 , 4 , 5 , 5 , 6 , 6 , 7 , 7 , 8 , 8 , 9 , 9 , 10 , 10];
-const demoNum = [75, 25, 10, 6, 6, 7];
-const demoTarget = [403];
-let selectedNum = [];
-
 const playBtn = document.getElementById('play-btn');
 const setBtn = document.getElementById('set-btn');
 const resetBtn = document.getElementById('reset-btn');
@@ -22,12 +15,20 @@ const timerContainer = document.getElementById('timer-wrapper');
 const hardMode = document.getElementById('hard-mode');
 const display = document.querySelector('#timer');
 
+let hardLargeNum = [12, 37, 62, 87];
+let largeNum = [25, 50, 75, 100];
+let smallNum = [1 , 1 , 2 , 2 , 3 , 3 , 4 , 4 , 5 , 5 , 6 , 6 , 7 , 7 , 8 , 8 , 9 , 9 , 10 , 10];
+const demoNum = [75, 25, 10, 6, 6, 7];
+const demoTarget = [403];
+let selectedNum = [];
+let timeIsRunning = false;
+
+//random num generators 
 function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min) + min);
 };
-
 function getRandomLarge(){
     let numSet;
     if(hardMode.checked === true){
@@ -39,16 +40,15 @@ function getRandomLarge(){
     let result = numSet[i];
     numSet.splice(i, 1);
     return result;
-}
-
+};
 function getRandomSmall(){
     let i = getRandomInt(0, smallNum.length);
     let result = smallNum[i];
     smallNum.splice(i, 1);
     return result;
-}
+};
 
- //timer
+//timer
 let timer = timerDuration.value;
 let countdown;
 function formatTimer(){
@@ -60,8 +60,7 @@ function formatTimer(){
     seconds = seconds < 10 ? "0" + seconds : seconds;
 
     display.textContent = minutes + ":" + seconds;
-}
-
+};
 function startTimer(duration) {
      timer = duration;      
      timeIsRunning = true;   
@@ -78,55 +77,28 @@ function startTimer(duration) {
             timer = duration;
         }         
     }, 1000);     
- }
- 
+ }; 
  function resetTimer() {
     timeIsRunning = false;
     timerContainer.style.backgroundColor = "white"    
     clearInterval(countdown);
     timer = timerDuration.value;    
     formatTimer();
- }
+ };
 
 //buttons
 //sets target and starts timer
 playBtn.addEventListener('click', () => {        
-    targetDisplay.innerHTML = getRandomInt(101, 999);        
+    targetDisplay.innerHTML = getRandomInt(101, 999);      
     playBtn.disabled = true;
     
-    if(timeIsRunning === false){
+    if(timeIsRunning != true){        
         let duration = timerDuration.value;    
+        timerDuration.disabled = true;
+        startTimeBtn.style.backgroundColor = "lightgreen"
         startTimer(duration);
     }
 });
-let timeIsRunning = false;
-startTimeBtn.addEventListener('click', () => {        
-    if(timeIsRunning != true){
-        let duration = timer;    
-        timeIsRunning = true;
-        startTimer(duration);
-    } else {
-        timeIsRunning = false;
-        clearInterval(countdown);                
-    }
-    
-});
-//sets chosen numbers
-setBtn.addEventListener('click', () => {            
-    let largeNums = largeNumSelector.value;    
-    for(let i=0; i<largeNums;i++){
-        selectedNum.push(getRandomLarge());        
-    }
-    for(let i=largeNums; i<6; i++){
-        selectedNum.push(getRandomSmall());        
-    }
-    for(let i=0; i<numTableRow.cells.length; i++){
-        numTableRow.cells[i].innerHTML = selectedNum[i];        
-    }        
-    setBtn.disabled = true;
-    largeNumSelector.disabled = true;         
-});
-
 //resets everything
 resetBtn.addEventListener('click', () => {        
     targetDisplay.innerHTML = "000";    
@@ -144,9 +116,39 @@ resetBtn.addEventListener('click', () => {
     largeNumSelector.disabled = false;     
     
     timerContainer.style.backgroundColor = "white"
+    timerDuration.disabled = false;
+    startTimeBtn.style.backgroundColor = "lightcoral"
     resetTimer();    
 });
-
+//sets chosen numbers
+setBtn.addEventListener('click', () => {            
+    let largeNums = largeNumSelector.value;    
+    for(let i=0; i<largeNums;i++){
+        selectedNum.push(getRandomLarge());        
+    }
+    for(let i=largeNums; i<6; i++){
+        selectedNum.push(getRandomSmall());        
+    }
+    for(let i=0; i<numTableRow.cells.length; i++){
+        numTableRow.cells[i].innerHTML = selectedNum[i];        
+    }        
+    setBtn.disabled = true;
+    largeNumSelector.disabled = true;         
+});
+startTimeBtn.addEventListener('click', () => {        
+    if(timeIsRunning != true){
+        let duration = timer;    
+        timerDuration.disabled = true;
+        timeIsRunning = true;
+        startTimeBtn.style.backgroundColor = "lightgreen"
+        startTimer(duration);
+    } else {
+        timeIsRunning = false;
+        timerDuration.disabled = false;
+        startTimeBtn.style.backgroundColor = "lightcoral"
+        clearInterval(countdown);                
+    }    
+});
 //displays hidden items
 rulesBtn.addEventListener('click', () => {
     if(rulesContainer.style.visibility == "visible"){
@@ -155,7 +157,6 @@ rulesBtn.addEventListener('click', () => {
         rulesContainer.style.visibility = "visible";
     }
 });
-
 timerBtn.addEventListener('click', () => {
   if(timerContainer.style.visibility == "visible"){
     timerContainer.style.visibility = "hidden";
@@ -163,6 +164,7 @@ timerBtn.addEventListener('click', () => {
     timerContainer.style.visibility = "visible";
   }
 });
+//fills with premade data for demo purposes
 demoBtn.addEventListener('click', () => {   
     for(let i=0; i<6; i++){
         selectedNum.push(demoNum[i]);        
@@ -176,22 +178,23 @@ demoBtn.addEventListener('click', () => {
 
     targetDisplay.innerHTML = demoTarget;        
     playBtn.disabled = true;
-  });
-  timerDuration.addEventListener('click', () => {    
+});
+//sets timer
+timerDuration.addEventListener('click', () => {    
     let minutes, seconds;    
     minutes = parseInt(timerDuration.value / 60, 10)
     seconds = parseInt(timerDuration.value % 60, 10);
 
     minutes = minutes < 10 ? "0" + minutes : minutes;
     seconds = seconds < 10 ? "0" + seconds : seconds;
-
-    display.textContent = minutes + ":" + seconds;
-  })
-  hardMode.addEventListener('click', () =>{
-      const body = document.getElementsByTagName('body')[0];
-      if (hardMode.checked === true){
+    display.textContent = minutes + ":" + seconds;    
+});
+//togles hard mode
+hardMode.addEventListener('click', () =>{
+    const body = document.getElementsByTagName('body')[0];
+    if (hardMode.checked === true){
         body.style.backgroundImage = "linear-gradient(rgb(252, 169, 173) .1em, transparent .1em), linear-gradient(90deg, rgb(252, 169, 173) .1em, transparent .1em)";
-      } else {
+    } else {
         body.style.backgroundImage = "linear-gradient(rgb(169, 235, 252) .1em, transparent .1em), linear-gradient(90deg, rgb(169, 235, 252) .1em, transparent .1em)";
-      }
-  })
+    }
+});
