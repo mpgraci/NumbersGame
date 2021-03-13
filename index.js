@@ -5,6 +5,7 @@ const rulesBtn = document.getElementById('Rules-btn');
 const timerBtn = document.getElementById('timer-btn');
 const demoBtn = document.getElementById('demo-btn');
 const startTimeBtn = document.getElementById('startTime-btn');
+const timerSetBtn = document.getElementById('timerSet-btn');
 
 const targetDisplay = document.getElementById('target');
 const numTableRow = document.getElementById('numTable-row');
@@ -68,6 +69,8 @@ function startTimer(duration) {
         formatTimer();
         if(timer === 0){
          timerContainer.style.backgroundColor = "red"  
+         startTimeBtn.style.backgroundColor = "lightcoral"
+         timerSetBtn.disabled = false;
          timeIsRunning = false;   
          clearInterval(countdown);
         } else if(timer < 11){        
@@ -93,8 +96,8 @@ playBtn.addEventListener('click', () => {
     playBtn.disabled = true;
     
     if(timeIsRunning != true){        
-        let duration = timerDuration.value;    
-        timerDuration.disabled = true;
+        let duration = timer;    
+        timerSetBtn.disabled = true;
         startTimeBtn.style.backgroundColor = "lightgreen"
         startTimer(duration);
     }
@@ -116,7 +119,7 @@ resetBtn.addEventListener('click', () => {
     largeNumSelector.disabled = false;     
     
     timerContainer.style.backgroundColor = "white"
-    timerDuration.disabled = false;
+    timerSetBtn.disabled = false;
     startTimeBtn.style.backgroundColor = "lightcoral"
     resetTimer();    
 });
@@ -138,13 +141,13 @@ setBtn.addEventListener('click', () => {
 startTimeBtn.addEventListener('click', () => {        
     if(timeIsRunning != true){
         let duration = timer;    
-        timerDuration.disabled = true;
+        timerSetBtn.disabled = true;
         timeIsRunning = true;
         startTimeBtn.style.backgroundColor = "lightgreen"
         startTimer(duration);
     } else {
         timeIsRunning = false;
-        timerDuration.disabled = false;
+        timerSetBtn.disabled = false;
         startTimeBtn.style.backgroundColor = "lightcoral"
         clearInterval(countdown);                
     }    
@@ -180,14 +183,15 @@ demoBtn.addEventListener('click', () => {
     playBtn.disabled = true;
 });
 //sets timer
-timerDuration.addEventListener('click', () => {    
-    let minutes, seconds;    
+timerSetBtn.addEventListener('click', () => {    
+    let minutes, seconds;        
     minutes = parseInt(timerDuration.value / 60, 10)
     seconds = parseInt(timerDuration.value % 60, 10);
 
     minutes = minutes < 10 ? "0" + minutes : minutes;
     seconds = seconds < 10 ? "0" + seconds : seconds;
     display.textContent = minutes + ":" + seconds;    
+    timer = timerDuration.value;
 });
 //togles hard mode
 hardMode.addEventListener('click', () =>{
