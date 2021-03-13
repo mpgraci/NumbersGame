@@ -8,57 +8,53 @@
     <body>
           
         <div id="container">  
-            <div id="timer-wrapper">                                
-                <div>
-                    
-                </div>            
-            </br>
+            <div id="timer-wrapper">                                                            
                 <div id="timer">
                     00:30
                 </div>   
             </br>
                 <div>
-                    <input type="number" value="30" id="seconds"step="15">                
+                    <input type="number" value="30" id="timer-duration"step="15">                
                     <button id="startTime-btn">&#9658;&#10074;&#10074;</button>
                 </div>
             </div>          
-        <div class="wrapper center">
-            <div id="target-div">
-                <div id="header-group">                
-                    <h1 id="target">000</h1>                 
-                </div>
-                <div id="table-group">
-                    <table id="selectedNum-table">
-                        <tr id="table-row">
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                        </tr>
-                    </table>     
-                </div>   
-            </div>                    
-            <div id="input-div">
-                <div id="number-selection-group">                    
-                    <label>Large Numbers: </label>
-                    <select id="large-num-selector">
-                        <option value="0">0</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                    </select>                                
-                    <button id="set-btn">Set</button>
-                </div>                
-                <div id="button-group">
-                    <button id="go-btn">Play</button>                
-                    <button id="reset-btn">Reset</button>
-                </div>  
-            </div>                                 
-        </div>        
-            <div id="rules-wrapper">                
+            <div class="center-box">
+                <div id="display-container">
+                    <div id="header-group">                
+                        <h1 id="target">000</h1>                 
+                    </div>
+                    <div id="table-container">
+                        <table id="selectedNum-table">
+                            <tr id="numTable-row">
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                        </table>     
+                    </div>   
+                </div>                    
+                <div id="input-container">
+                    <div id="number-selection">                    
+                        <label>Large Numbers: </label>
+                        <select id="large-num-selector">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>                                
+                        <button id="set-btn">Set</button>
+                    </div>                
+                    <div id="button-container">
+                        <button id="play-btn">Play</button>                
+                        <button id="reset-btn">Reset</button>
+                    </div>  
+                </div>                                 
+            </div>        
+            <div id="rules-container">                
                 <b>The Goal:</b> </br> </br>
                 Using the six given numbers, make the target number </br>
             </br>
@@ -81,9 +77,8 @@
                     <li>7 points: 1-5 away from target </li>
                     <li>5 points: 6-10 away from target </li>
                 </ul>
-            </div>
-        
-    </div>  
+            </div>        
+        </div>  
         <div id="button-div">
             <div id="hardMode-div">
                 <input type="checkbox" id="hard-mode"><label>Hard Mode</label>

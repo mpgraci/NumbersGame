@@ -5,7 +5,7 @@ const demoNum = [75, 25, 10, 6, 6, 7];
 const demoTarget = [403];
 let selectedNum = [];
 
-const goBtn = document.getElementById('go-btn');
+const playBtn = document.getElementById('play-btn');
 const setBtn = document.getElementById('set-btn');
 const resetBtn = document.getElementById('reset-btn');
 const rulesBtn = document.getElementById('Rules-btn');
@@ -14,11 +14,11 @@ const demoBtn = document.getElementById('demo-btn');
 const startTimeBtn = document.getElementById('startTime-btn');
 
 const targetDisplay = document.getElementById('target');
-const tableRow = document.getElementById('table-row');
+const numTableRow = document.getElementById('numTable-row');
 const largeNumSelector = document.getElementById('large-num-selector');
-const timerDuration = document.getElementById('seconds');
-const rulesWrapper = document.getElementById('rules-wrapper');
-const timerWrapper = document.getElementById('timer-wrapper');
+const timerDuration = document.getElementById('timer-duration');
+const rulesContainer = document.getElementById('rules-container');
+const timerContainer = document.getElementById('timer-wrapper');
 const hardMode = document.getElementById('hard-mode');
 const display = document.querySelector('#timer');
 
@@ -68,11 +68,11 @@ function startTimer(duration) {
      countdown = setInterval(function () {
         formatTimer();
         if(timer === 0){
-         timerWrapper.style.backgroundColor = "red"  
+         timerContainer.style.backgroundColor = "red"  
          timeIsRunning = false;   
          clearInterval(countdown);
         } else if(timer < 11){        
-           timerWrapper.style.backgroundColor = "yellow"
+           timerContainer.style.backgroundColor = "yellow"
         }
         if (--timer < 0) {        
             timer = duration;
@@ -82,7 +82,7 @@ function startTimer(duration) {
  
  function resetTimer() {
     timeIsRunning = false;
-    timerWrapper.style.backgroundColor = "white"    
+    timerContainer.style.backgroundColor = "white"    
     clearInterval(countdown);
     timer = timerDuration.value;    
     formatTimer();
@@ -90,9 +90,9 @@ function startTimer(duration) {
 
 //buttons
 //sets target and starts timer
-goBtn.addEventListener('click', () => {        
+playBtn.addEventListener('click', () => {        
     targetDisplay.innerHTML = getRandomInt(101, 999);        
-    goBtn.disabled = true;
+    playBtn.disabled = true;
     
     if(timeIsRunning === false){
         let duration = timerDuration.value;    
@@ -120,8 +120,8 @@ setBtn.addEventListener('click', () => {
     for(let i=largeNums; i<6; i++){
         selectedNum.push(getRandomSmall());        
     }
-    for(let i=0; i<tableRow.cells.length; i++){
-        tableRow.cells[i].innerHTML = selectedNum[i];        
+    for(let i=0; i<numTableRow.cells.length; i++){
+        numTableRow.cells[i].innerHTML = selectedNum[i];        
     }        
     setBtn.disabled = true;
     largeNumSelector.disabled = true;         
@@ -135,47 +135,47 @@ resetBtn.addEventListener('click', () => {
     smallNum = [1 , 1 , 2 , 2 , 3 , 3 , 4 , 4 , 5 , 5 , 6 , 6 , 7 , 7 , 8 , 8 , 9 , 9 , 10 , 10];
     selectedNum = [];
 
-    for(let i=0; i<tableRow.cells.length; i++){
-        tableRow.cells[i].innerHTML = "0";        
+    for(let i=0; i<numTableRow.cells.length; i++){
+        numTableRow.cells[i].innerHTML = "0";        
     }    
 
-    goBtn.disabled = false;
+    playBtn.disabled = false;
     setBtn.disabled = false;
     largeNumSelector.disabled = false;     
     
-    timerWrapper.style.backgroundColor = "white"
+    timerContainer.style.backgroundColor = "white"
     resetTimer();    
 });
 
 //displays hidden items
 rulesBtn.addEventListener('click', () => {
-    if(rulesWrapper.style.visibility == "visible"){
-        rulesWrapper.style.visibility = "hidden";
+    if(rulesContainer.style.visibility == "visible"){
+        rulesContainer.style.visibility = "hidden";
     } else {
-        rulesWrapper.style.visibility = "visible";
+        rulesContainer.style.visibility = "visible";
     }
 });
 
 timerBtn.addEventListener('click', () => {
-  if(timerWrapper.style.visibility == "visible"){
-    timerWrapper.style.visibility = "hidden";
+  if(timerContainer.style.visibility == "visible"){
+    timerContainer.style.visibility = "hidden";
   } else {
-    timerWrapper.style.visibility = "visible";
+    timerContainer.style.visibility = "visible";
   }
 });
 demoBtn.addEventListener('click', () => {   
     for(let i=0; i<6; i++){
         selectedNum.push(demoNum[i]);        
     }
-    for(let i=0; i<tableRow.cells.length; i++){
-        tableRow.cells[i].innerHTML = selectedNum[i];        
+    for(let i=0; i<numTableRow.cells.length; i++){
+        numTableRow.cells[i].innerHTML = selectedNum[i];        
     }        
     setBtn.disabled = true;
     largeNumSelector.value = "2";
     largeNumSelector.disabled = true;         
 
     targetDisplay.innerHTML = demoTarget;        
-    goBtn.disabled = true;
+    playBtn.disabled = true;
   });
   timerDuration.addEventListener('click', () => {    
     let minutes, seconds;    
