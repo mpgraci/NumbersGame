@@ -128,11 +128,12 @@ resetBtn.addEventListener('click', () => {
 });
 //sets chosen numbers
 setBtn.addEventListener('click', () => {            
-    let largeNums = largeNumSelector.value;    
+    let largeNums = largeNumSelector.value;   
+    selectedNum = []; 
     for(let i=0; i<largeNums;i++){
         selectedNum.push(getRandomLarge());        
     }
-    for(let i=largeNums; i<6; i++){
+    for(let i=largeNums; i<numTableRow.cells.length; i++){
         selectedNum.push(getRandomSmall());        
     }
     for(let i=0; i<numTableRow.cells.length; i++){
@@ -141,20 +142,6 @@ setBtn.addEventListener('click', () => {
     setBtn.disabled = true;
     playBtn.disabled = false;
     largeNumSelector.disabled = true;         
-});
-startTimeBtn.addEventListener('click', () => {        
-    if(timeIsRunning != true){
-        let duration = timer;    
-        timerSetBtn.disabled = true;
-        timeIsRunning = true;
-        startTimeBtn.style.backgroundColor = "lightgreen"
-        startTimer(duration);
-    } else {
-        timeIsRunning = false;
-        timerSetBtn.disabled = false;
-        startTimeBtn.style.backgroundColor = "lightcoral"
-        clearInterval(countdown);                
-    }    
 });
 //displays hidden items
 rulesBtn.addEventListener('click', () => {
@@ -172,8 +159,9 @@ timerBtn.addEventListener('click', () => {
   }
 });
 //fills with premade data for demo purposes
-demoBtn.addEventListener('click', () => {   
-    for(let i=0; i<6; i++){
+demoBtn.addEventListener('click', () => { 
+    selectedNum = [];  
+    for(let i=0; i<demoNum.length; i++){
         selectedNum.push(demoNum[i]);        
     }
     for(let i=0; i<numTableRow.cells.length; i++){
@@ -196,6 +184,23 @@ timerSetBtn.addEventListener('click', () => {
     seconds = seconds < 10 ? "0" + seconds : seconds;
     display.textContent = minutes + ":" + seconds;    
     timer = timerDuration.value;
+    if(timerDuration.value > 10){
+        timerContainer.style.backgroundColor = "white"
+    }
+});
+startTimeBtn.addEventListener('click', () => {        
+    if(timeIsRunning != true){
+        let duration = timer;    
+        timerSetBtn.disabled = true;
+        timeIsRunning = true;
+        startTimeBtn.style.backgroundColor = "lightgreen"
+        startTimer(duration);
+    } else {
+        timeIsRunning = false;
+        timerSetBtn.disabled = false;
+        startTimeBtn.style.backgroundColor = "lightcoral"
+        clearInterval(countdown);                
+    }    
 });
 //toggles hard mode
 hardMode.addEventListener('click', () =>{
