@@ -6,6 +6,7 @@ const timerBtn = document.getElementById('timer-btn');
 const demoBtn = document.getElementById('demo-btn');
 const startTimeBtn = document.getElementById('startTime-btn');
 const timerSetBtn = document.getElementById('timerSet-btn');
+const resetTimerBtn = document.getElementById('resetTime-btn');
 
 const targetDisplay = document.getElementById('target');
 const numTableRow = document.getElementById('numTable-row');
@@ -69,14 +70,14 @@ function startTimer(duration) {
      timeIsRunning = true;   
      countdown = setInterval(function () {
         formatTimer();
-        if(timer === 0){
-         timerContainer.style.backgroundColor = "red"  
-         startTimeBtn.style.backgroundColor = "lightcoral"
-         timerSetBtn.disabled = false;
-         timeIsRunning = false;   
-         clearInterval(countdown);
-        } else if(timer < 11){        
-           timerContainer.style.backgroundColor = "yellow"
+        if(timer === 0){            
+            display.style.backgroundColor = "red"  
+            startTimeBtn.style.backgroundColor = "green"
+            timerSetBtn.disabled = false;
+            timeIsRunning = false;   
+            clearInterval(countdown);
+        } else if(timer < 11){                    
+            display.style.backgroundColor = "yellow"
         }
         if (--timer < 0) {        
             timer = duration;
@@ -84,8 +85,8 @@ function startTimer(duration) {
     }, 1000);     
  }; 
  function resetTimer() {
-    timeIsRunning = false;
-    timerContainer.style.backgroundColor = "white"    
+    timeIsRunning = false;        
+    display.style.backgroundColor = "white"    
     clearInterval(countdown);
     timer = timerDuration.value;    
     formatTimer();
@@ -100,7 +101,7 @@ playBtn.addEventListener('click', () => {
     if(timeIsRunning != true){        
         let duration = timer;    
         timerSetBtn.disabled = true;
-        startTimeBtn.style.backgroundColor = "lightgreen"
+        startTimeBtn.style.backgroundColor = "rgb(248, 45, 45)"
         startTimer(duration);
     }
 });
@@ -119,10 +120,10 @@ resetBtn.addEventListener('click', () => {
     playBtn.disabled = false;
     setBtn.disabled = false;
     largeNumSelector.disabled = false;     
-    
-    timerContainer.style.backgroundColor = "white"
+        
+    display.style.backgroundColor = "white"    
     timerSetBtn.disabled = false;
-    startTimeBtn.style.backgroundColor = "lightcoral"
+    startTimeBtn.style.backgroundColor = "green"
     playBtn.disabled = true;
     resetTimer();    
 });
@@ -146,7 +147,7 @@ setBtn.addEventListener('click', () => {
 //displays hidden items
 rulesBtn.addEventListener('click', () => {
     if(rulesContainer.style.visibility == "visible"){
-        rulesContainer.style.visibility = "hidden";
+        rulesContainer.style.visibility = "hidden";        
     } else {
         rulesContainer.style.visibility = "visible";
     }
@@ -174,7 +175,7 @@ demoBtn.addEventListener('click', () => {
     targetDisplay.innerHTML = demoTarget;        
     playBtn.disabled = true;
 });
-//sets timer
+//timer controls
 timerSetBtn.addEventListener('click', () => {    
     let minutes, seconds;        
     minutes = parseInt(timerDuration.value / 60, 10)
@@ -184,8 +185,8 @@ timerSetBtn.addEventListener('click', () => {
     seconds = seconds < 10 ? "0" + seconds : seconds;
     display.textContent = minutes + ":" + seconds;    
     timer = timerDuration.value;
-    if(timerDuration.value > 10){
-        timerContainer.style.backgroundColor = "white"
+    if(timerDuration.value > 10){        
+        display.style.backgroundColor = "white"    
     }
 });
 startTimeBtn.addEventListener('click', () => {        
@@ -193,14 +194,21 @@ startTimeBtn.addEventListener('click', () => {
         let duration = timer;    
         timerSetBtn.disabled = true;
         timeIsRunning = true;
-        startTimeBtn.style.backgroundColor = "lightgreen"
+        startTimeBtn.style.backgroundColor = "rgb(248, 45, 45)"
         startTimer(duration);
     } else {
         timeIsRunning = false;
         timerSetBtn.disabled = false;
-        startTimeBtn.style.backgroundColor = "lightcoral"
+        startTimeBtn.style.backgroundColor = "green"
         clearInterval(countdown);                
     }    
+});
+resetTimerBtn.addEventListener('click', () => {            
+    display.style.backgroundColor = "white"    
+    timerSetBtn.disabled = false;
+    startTimeBtn.style.backgroundColor = "green"
+    playBtn.disabled = true;
+    resetTimer();    
 });
 //toggles hard mode
 hardMode.addEventListener('click', () =>{

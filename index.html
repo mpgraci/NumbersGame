@@ -2,24 +2,26 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Numbers Game</title>
-        <link rel="stylesheet" href="styles.css">
+        <title>Numbers Game</title>        
+        <link rel="stylesheet" href="css/styles.css">        
     </head>
     <body>
           
         <div id="container">  
-            <div id="timer-wrapper">                                                            
+            <div id="timer-wrapper">   
+                
                 <div id="timer">
                     00:30
-                </div>   
+                </div>                                        
             </br>
-                <div>
+                <div id = "timerSet-group">
                     <input type="number" value="30" id="timer-duration"step="15">                
-                    <button id="timerSet-btn">Set</button>                    
+                    <button id="timerSet-btn">&#10004;</button>  
+                    <button id="resetTime-btn">&#8634;</button>
                 </div>
                 <div>
-                    <button id="startTime-btn">&#9658;&#10074;&#10074;</button>
-                </div>
+                    <button id="startTime-btn">&#9658;&#10074;&#10074;</button>                                                         
+                </div>            
             </div>          
             <div class="center-box">
                 <div id="display-container">
@@ -94,7 +96,7 @@
             </div>
         </div> 
         <script type="module">
-            import './index.js';            
+            import './js/index.js';            
         </script>
     </body>
 </html>

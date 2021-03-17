@@ -28,6 +28,13 @@ button {
     width: 120px;
     font-size: 35px;
     border-radius: 10px;    
+    background-color: rgb(48,68,137);
+    color: white;
+    box-shadow: 5px 5px 2px 1px rgb(184, 184, 184);
+    outline: none;
+}
+button:disabled {
+    background: #dddddd;
 }
 input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button {  
@@ -48,13 +55,14 @@ input[type=number]::-webkit-outer-spin-button {
     margin-top: 50px;
     display: flex;
     align-items: flex-start;
-    justify-content: space-evenly;
+    justify-content: space-evenly;    
+    
 }
 #target {
     border: 2px solid black;
     border-radius: 5px;
-    width: 200px;
-    font-size: 100px;
+    width: 210px;
+    font-size: 110px;
     background-color: rgb(43,33,163);
     color: white;
 }
@@ -70,6 +78,7 @@ input[type=number]::-webkit-outer-spin-button {
     border-radius: 15px; 
     margin-bottom: 20px;
     width: 650px;
+    box-shadow: 5px 5px 2px 1px rgb(184, 184, 184);
 }
 #input-container {
     background-color: rgb(255, 255, 255);    
@@ -82,6 +91,7 @@ input[type=number]::-webkit-outer-spin-button {
     width: 650px;
     position: absolute; bottom: 0px; 
     margin-bottom: 20px;      
+    box-shadow: 5px 5px 2px 1px rgb(184, 184, 184);
 }
 #header-group {
     text-align: center;
@@ -100,7 +110,7 @@ input[type=number]::-webkit-outer-spin-button {
     display: flex;
     flex-direction: column;
     text-align: center;    
-    justify-self: left;   
+    justify-self: left;       
     margin-right: auto;
     margin-left: 20px;    
     visibility: hidden;
@@ -110,22 +120,41 @@ input[type=number]::-webkit-outer-spin-button {
     background-color: white;
     padding: 20px;
     border: 1px solid black;
-    border-radius: 15px;        
+    border-radius: 15px;     
+    box-shadow: 5px 5px 2px 1px rgb(184, 184, 184);   
 }
 #timer-wrapper label {
-    font-size: 40px;    
+    font-size: 40px;        
+}
+#timer {
+    font-size: 90px;   
+    border: 2px solid black;
+    border-radius: 10px;                  
+}
+#startTime-btn {
+    background-color: green;
+}
+#timerSet-group {
+    display: flex;
+    justify-content: center;        
 }
 #timer-duration {
     margin-bottom: 20px;
+    margin-right: 5px;
     font-size: 40px;
     width: 90px;    
-    border-radius: 5px;
+    border-radius: 5px;    
 }
-#timer {
-    font-size: 70px;    
+#timerSet-btn {
+    font-weight: bold;
+    margin-right: 25px;
+    width: 50px;    
+    height: 50px;    
 }
-#startTime-btn {
-    background-color: lightcoral;
+#resetTime-btn {
+    font-weight: bold;
+    width: 50px; 
+    height: 50px;    
 }
 /*Rules*/
 #rules-container {     
@@ -143,6 +172,7 @@ input[type=number]::-webkit-outer-spin-button {
     padding: 20px;
     border: 1px solid black;
     border-radius: 15px;    
+    box-shadow: 5px 5px 2px 1px rgb(184, 184, 184);
 }
 /*Bottom panel*/
 #button-div {
