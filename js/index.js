@@ -17,15 +17,21 @@ const timerContainer = document.getElementById('timer-wrapper');
 const hardMode = document.getElementById('hard-mode');
 const display = document.querySelector('#timer');
 
+const demoObj = {
+    demo1: {
+        target: 403,
+        numbers: [75, 25, 10, 6, 6, 7]
+    },
+    demo2: {
+        target: 979,
+        numbers: [75, 100, 1, 9, 2, 8]
+    }
+};
 let hardLargeNum = [12, 37, 62, 87];
 let largeNum = [25, 50, 75, 100];
 let smallNum = [1 , 1 , 2 , 2 , 3 , 3 , 4 , 4 , 5 , 5 , 6 , 6 , 7 , 7 , 8 , 8 , 9 , 9 , 10 , 10];
-const demoNum = [75, 25, 10, 6, 6, 7];
-const demoTarget = [403];
 let selectedNum = [];
 let timeIsRunning = false;
-
-playBtn.disabled = true;
 
 //random num generators 
 function getRandomInt(min, max) {
@@ -167,17 +173,20 @@ timerBtn.addEventListener('click', () => {
 });
 //fills with premade data for demo purposes
 demoBtn.addEventListener('click', () => { 
-    selectedNum = [];  
+    selectedNum = [];      
+    let demoTarget = demoObj.demo1.target;
+    let demoNum = demoObj.demo1.numbers;    
+    largeNumSelector.value = "2";
+
     for(let i=0; i<demoNum.length; i++){
         selectedNum.push(demoNum[i]);        
     };
     for(let i=0; i<numTableRow.cells.length; i++){
         numTableRow.cells[i].innerHTML = selectedNum[i];        
     };        
-    setBtn.disabled = true;
-    largeNumSelector.value = "2";
-    largeNumSelector.disabled = true;   
     targetDisplay.innerHTML = demoTarget;        
+    setBtn.disabled = true;    
+    largeNumSelector.disabled = true;       
     playBtn.disabled = true;
 });
 //timer controls
