@@ -4,8 +4,8 @@ const resetBtn = document.getElementById('reset-btn');
 const rulesBtn = document.getElementById('Rules-btn');
 const timerBtn = document.getElementById('timer-btn');
 const demoBtn = document.getElementById('demo-btn');
-const startTimeBtn = document.getElementById('startTime-btn');
-const timerSetBtn = document.getElementById('timerSet-btn');
+const startTimerBtn = document.getElementById('startTime-btn');
+const setTimerBtn = document.getElementById('timerSet-btn');
 const resetTimerBtn = document.getElementById('resetTime-btn');
 
 const targetDisplay = document.getElementById('target');
@@ -73,8 +73,8 @@ function formatTimer(){
 };
 function startTimer(duration) {
     timer = duration;      
-    timeIsRunning = true;   
-    countdown = setInterval(function () {
+    timeIsRunning = true;       
+    function beginTimer() {
         formatTimer();
         if(timer === 0){            
             timeIsRunning = false;   
@@ -83,11 +83,15 @@ function startTimer(duration) {
             display.style.backgroundColor = "red"                          
         } else if(timer < 11){                    
             display.style.backgroundColor = "yellow"
+        } else if(timer > 10){
+            display.style.backgroundColor = "white"
         }
         if (--timer < 0) {        
                 timer = duration;
         }         
-    }, 1000);     
+    };     
+    beginTimer();
+    countdown = setInterval(beginTimer, 1000)
 }; 
 function resetTimer() {
     timeIsRunning = false;        
@@ -99,13 +103,13 @@ function resetTimer() {
 //changes start/stop timer btn styles
 function changeTimerBtnStyle(running){
     if (running){        
-        startTimeBtn.innerHTML = "&#10074;&#10074;"
-        startTimeBtn.style.backgroundColor = "rgb(248, 45, 45)"
-        timerSetBtn.disabled = true;
+        startTimerBtn.innerHTML = "&#10074;&#10074;"
+        startTimerBtn.style.backgroundColor = "rgb(248, 45, 45)"
+        setTimerBtn.disabled = true;
     } else {
-        startTimeBtn.innerHTML = "&#9658;"
-        startTimeBtn.style.backgroundColor = "green"
-        timerSetBtn.disabled = false;
+        startTimerBtn.innerHTML = "&#9658;"
+        startTimerBtn.style.backgroundColor = "green"
+        setTimerBtn.disabled = false;
     }
 };
 
@@ -137,7 +141,7 @@ resetBtn.addEventListener('click', () => {
     playBtn.disabled = true;        
     changeTimerBtnStyle(false);        
     resetTimer();    
-    display.style.backgroundColor = "white"   
+    //display.style.backgroundColor = "white"   
 });
 //sets chosen numbers
 setBtn.addEventListener('click', () => {            
@@ -190,7 +194,7 @@ demoBtn.addEventListener('click', () => {
     playBtn.disabled = true;
 });
 //timer controls
-timerSetBtn.addEventListener('click', () => {    
+setTimerBtn.addEventListener('click', () => {    
     let minutes, seconds;        
     minutes = parseInt(timerDuration.value / 60, 10)
     seconds = parseInt(timerDuration.value % 60, 10);
@@ -203,7 +207,7 @@ timerSetBtn.addEventListener('click', () => {
         display.style.backgroundColor = "white"    
     };
 });
-startTimeBtn.addEventListener('click', () => {        
+startTimerBtn.addEventListener('click', () => {        
     if(timeIsRunning != true){
         let duration = timer;            
         timeIsRunning = true;
@@ -218,8 +222,7 @@ startTimeBtn.addEventListener('click', () => {
 resetTimerBtn.addEventListener('click', () => {                
     changeTimerBtnStyle(false);        
     resetTimer();    
-    playBtn.disabled = true;
-    display.style.backgroundColor = "white"    
+    playBtn.disabled = true;    
 });
 //toggles hard mode
 hardMode.addEventListener('click', () =>{
