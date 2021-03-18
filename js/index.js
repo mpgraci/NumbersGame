@@ -134,14 +134,12 @@ resetBtn.addEventListener('click', () => {
     selectedNum = [];
     for(let i=0; i<numTableRow.cells.length; i++){
         numTableRow.cells[i].innerHTML = "0";        
-    };    
-    playBtn.disabled = false;
+    };        
     setBtn.disabled = false;
     largeNumSelector.disabled = false;     
     playBtn.disabled = true;        
     changeTimerBtnStyle(false);        
-    resetTimer();    
-    //display.style.backgroundColor = "white"   
+    resetTimer();        
 });
 //sets chosen numbers
 setBtn.addEventListener('click', () => {            
@@ -221,8 +219,7 @@ startTimerBtn.addEventListener('click', () => {
 });
 resetTimerBtn.addEventListener('click', () => {                
     changeTimerBtnStyle(false);        
-    resetTimer();    
-    playBtn.disabled = true;    
+    resetTimer();        
 });
 //toggles hard mode
 hardMode.addEventListener('click', () =>{
