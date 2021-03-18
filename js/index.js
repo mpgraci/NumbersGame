@@ -66,31 +66,42 @@ function formatTimer(){
     display.textContent = minutes + ":" + seconds;
 };
 function startTimer(duration) {
-     timer = duration;      
-     timeIsRunning = true;   
-     countdown = setInterval(function () {
+    timer = duration;      
+    timeIsRunning = true;   
+    countdown = setInterval(function () {
         formatTimer();
         if(timer === 0){            
-            display.style.backgroundColor = "red"  
-            startTimeBtn.style.backgroundColor = "green"
-            timerSetBtn.disabled = false;
             timeIsRunning = false;   
-            clearInterval(countdown);
+            changeTimerBtnStyle(false);    
+            clearInterval(countdown);                        
+            display.style.backgroundColor = "red"                          
         } else if(timer < 11){                    
             display.style.backgroundColor = "yellow"
         }
         if (--timer < 0) {        
-            timer = duration;
+                timer = duration;
         }         
     }, 1000);     
- }; 
- function resetTimer() {
+}; 
+function resetTimer() {
     timeIsRunning = false;        
-    display.style.backgroundColor = "white"    
-    clearInterval(countdown);
     timer = timerDuration.value;    
     formatTimer();
- };
+    clearInterval(countdown);    
+    display.style.backgroundColor = "white"    
+};
+//changes start/stop timer btn styles
+function changeTimerBtnStyle(running){
+    if (running){        
+        startTimeBtn.innerHTML = "&#10074;&#10074;"
+        startTimeBtn.style.backgroundColor = "rgb(248, 45, 45)"
+        timerSetBtn.disabled = true;
+    } else {
+        startTimeBtn.innerHTML = "&#9658;"
+        startTimeBtn.style.backgroundColor = "green"
+        timerSetBtn.disabled = false;
+    }
+};
 
 //buttons
 //sets target and starts timer
@@ -100,8 +111,7 @@ playBtn.addEventListener('click', () => {
     
     if(timeIsRunning != true){        
         let duration = timer;    
-        timerSetBtn.disabled = true;
-        startTimeBtn.style.backgroundColor = "rgb(248, 45, 45)"
+        changeTimerBtnStyle(true);
         startTimer(duration);
     }
 });
@@ -112,20 +122,16 @@ resetBtn.addEventListener('click', () => {
     largeNum = [25, 50, 75, 100];
     smallNum = [1 , 1 , 2 , 2 , 3 , 3 , 4 , 4 , 5 , 5 , 6 , 6 , 7 , 7 , 8 , 8 , 9 , 9 , 10 , 10];
     selectedNum = [];
-
     for(let i=0; i<numTableRow.cells.length; i++){
         numTableRow.cells[i].innerHTML = "0";        
-    }    
-
+    };    
     playBtn.disabled = false;
     setBtn.disabled = false;
     largeNumSelector.disabled = false;     
-        
-    display.style.backgroundColor = "white"    
-    timerSetBtn.disabled = false;
-    startTimeBtn.style.backgroundColor = "green"
-    playBtn.disabled = true;
+    playBtn.disabled = true;        
+    changeTimerBtnStyle(false);        
     resetTimer();    
+    display.style.backgroundColor = "white"   
 });
 //sets chosen numbers
 setBtn.addEventListener('click', () => {            
@@ -133,13 +139,13 @@ setBtn.addEventListener('click', () => {
     selectedNum = []; 
     for(let i=0; i<largeNums;i++){
         selectedNum.push(getRandomLarge());        
-    }
+    };
     for(let i=largeNums; i<numTableRow.cells.length; i++){
         selectedNum.push(getRandomSmall());        
-    }
+    };
     for(let i=0; i<numTableRow.cells.length; i++){
         numTableRow.cells[i].innerHTML = selectedNum[i];        
-    }        
+    };        
     setBtn.disabled = true;
     playBtn.disabled = false;
     largeNumSelector.disabled = true;         
@@ -150,28 +156,27 @@ rulesBtn.addEventListener('click', () => {
         rulesContainer.style.visibility = "hidden";        
     } else {
         rulesContainer.style.visibility = "visible";
-    }
+    };
 });
 timerBtn.addEventListener('click', () => {
   if(timerContainer.style.visibility == "visible"){
     timerContainer.style.visibility = "hidden";
   } else {
     timerContainer.style.visibility = "visible";
-  }
+  };
 });
 //fills with premade data for demo purposes
 demoBtn.addEventListener('click', () => { 
     selectedNum = [];  
     for(let i=0; i<demoNum.length; i++){
         selectedNum.push(demoNum[i]);        
-    }
+    };
     for(let i=0; i<numTableRow.cells.length; i++){
         numTableRow.cells[i].innerHTML = selectedNum[i];        
-    }        
+    };        
     setBtn.disabled = true;
     largeNumSelector.value = "2";
-    largeNumSelector.disabled = true;         
-
+    largeNumSelector.disabled = true;   
     targetDisplay.innerHTML = demoTarget;        
     playBtn.disabled = true;
 });
@@ -187,28 +192,25 @@ timerSetBtn.addEventListener('click', () => {
     timer = timerDuration.value;
     if(timerDuration.value > 10){        
         display.style.backgroundColor = "white"    
-    }
+    };
 });
 startTimeBtn.addEventListener('click', () => {        
     if(timeIsRunning != true){
-        let duration = timer;    
-        timerSetBtn.disabled = true;
+        let duration = timer;            
         timeIsRunning = true;
-        startTimeBtn.style.backgroundColor = "rgb(248, 45, 45)"
+        changeTimerBtnStyle(true);
         startTimer(duration);
     } else {
-        timeIsRunning = false;
-        timerSetBtn.disabled = false;
-        startTimeBtn.style.backgroundColor = "green"
+        timeIsRunning = false;        
+        changeTimerBtnStyle(false);    
         clearInterval(countdown);                
-    }    
+    };    
 });
-resetTimerBtn.addEventListener('click', () => {            
-    display.style.backgroundColor = "white"    
-    timerSetBtn.disabled = false;
-    startTimeBtn.style.backgroundColor = "green"
-    playBtn.disabled = true;
+resetTimerBtn.addEventListener('click', () => {                
+    changeTimerBtnStyle(false);        
     resetTimer();    
+    playBtn.disabled = true;
+    display.style.backgroundColor = "white"    
 });
 //toggles hard mode
 hardMode.addEventListener('click', () =>{
@@ -217,5 +219,5 @@ hardMode.addEventListener('click', () =>{
         body.style.backgroundImage = "linear-gradient(rgb(252, 169, 173) .1em, transparent .1em), linear-gradient(90deg, rgb(252, 169, 173) .1em, transparent .1em)";
     } else {
         body.style.backgroundImage = "linear-gradient(rgb(169, 235, 252) .1em, transparent .1em), linear-gradient(90deg, rgb(169, 235, 252) .1em, transparent .1em)";
-    }
+    };
 });
