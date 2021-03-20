@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Numbers Game</title>        
+        <title>Numbers</title>        
         <link rel="stylesheet" href="css/styles.css">        
     </head>
     <body>
@@ -59,22 +59,26 @@
                     </div>  
                 </div>                                 
             </div>        
-            <div id="rules-container">                
+            <div id="rules-container">    
+                <div id="rules-content">
                 <b>The Goal:</b> </br> </br>
-                Using the six given numbers, make the target number </br>
+                Using the six given numbers, get as close to the target number as possible </br>
             </br>
                 <b>The Pieces:</b>
                 <ul>
+                <li>Random target number: 101 - 999</li>
                 <li>Four large numbers: 25, 50, 75 and 100</li> 
-                <li>Twenty small numbers: Two of each digit from 1-10</li> 
-                <li>Any combination of those totalling six numbers(two large and four small; three large and three small; etc.) </li>
+                <li>Twenty small numbers: 1-10, two of each</li> 
             </ul>
             </br>
-                <b>The Rules:</b>
+                <b>How to Play:</b>
                 <ul>
-                <li>You can only use the operations addition, subtraction, multiplication, and division </li>
-                <li>You can only use each number once </li>
-                <li>Each step must result in a positive integer </li>
+                <li>Choose how many large numbers to use (randomly selected). The remainder will be populated with small numbers (randomly selected)</li>
+                <li>You may only use the operations addition, subtraction, multiplication, and division </li>
+                <li>You may only use each number once </li>
+                <li>Each step must result in a positive integer (no negatives or fractions allowed) </li>
+                <li>Concatenation is not allowed ("2" and "3" can't be combined to create "23"</li>
+                <li>You do not have to use all of the six given numbers</li>
             </ul>
                 </br>
                 <b>Scoring:</b>
@@ -83,7 +87,8 @@
                     <li>7 points: 1-5 away from target </li>
                     <li>5 points: 6-10 away from target </li>
                 </ul>
-            </div>        
+            </div>   
+        </div>                
         </div>  
         <div id="button-div">
             <div id="hardMode-div">

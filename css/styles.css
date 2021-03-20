@@ -75,7 +75,7 @@ input[type=number]::-webkit-outer-spin-button {
     background-color: rgb(73,104,155);    
     padding-bottom: 20px;
     border: 1px solid black;
-    border-radius: 15px; 
+    border-radius: 10px; 
     margin-bottom: 20px;
     width: 650px;
     box-shadow: 5px 5px 2px 1px rgb(184, 184, 184);
@@ -85,7 +85,7 @@ input[type=number]::-webkit-outer-spin-button {
     color: black;
     padding-bottom: 20px;
     border: 1px solid black;
-    border-radius: 15px; 
+    border-radius: 10px; 
     padding-top: 20px;
     padding-bottom: 20px;
     width: 650px;
@@ -110,17 +110,18 @@ input[type=number]::-webkit-outer-spin-button {
     display: flex;
     flex-direction: column;
     text-align: center;    
-    justify-self: left;       
+    justify-self: left;
+    margin-top: -30px;        
     margin-right: auto;
     margin-left: 20px;    
-    visibility: hidden;
-    /*visibility: visible;*/
+    visibility: visible;
+    
 
-    width: 350px;
+    width: 360px;
     background-color: white;
     padding: 20px;
     border: 1px solid black;
-    border-radius: 15px;     
+    border-radius: 10px;     
     box-shadow: 5px 5px 2px 1px rgb(184, 184, 184);   
 }
 #timer-wrapper label {
@@ -158,22 +159,31 @@ input[type=number]::-webkit-outer-spin-button {
     height: 50px;    
 }
 /*Rules*/
-#rules-container {     
+#rules-container {    
+    overflow-y: hidden;
     text-align: left;         
-    justify-self: right;    
+    justify-self: right;  
+    margin-top: -30px;   
     margin-left: auto;
     margin-right: 20px;
-    visibility: hidden;
-
+    visibility: visible;
     
     font-size: 20px;    
-    width: 350px;
+    width: 360px;
+    height: 760px;
     display: inline-block;    
     background-color: white;
-    padding: 20px;
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-bottom: 20px;
     border: 1px solid black;
-    border-radius: 15px;    
+    border-radius: 10px;    
     box-shadow: 5px 5px 2px 1px rgb(184, 184, 184);
+}
+#rules-content {
+    overflow-y: scroll;
+    width: 100%;    
+    height: 100%;
 }
 /*Bottom panel*/
 #button-div {
