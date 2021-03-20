@@ -16,15 +16,23 @@ const rulesContainer = document.getElementById('rules-container');
 const timerContainer = document.getElementById('timer-wrapper');
 const hardMode = document.getElementById('hard-mode');
 const display = document.querySelector('#timer');
+const demoBox = document.getElementById('demo-box');
 
 const demoObj = {
     demo1: {
         target: 403,
-        numbers: [75, 25, 10, 6, 6, 7]
+        numbers: [75, 25, 10, 6, 6, 7],
+        largeNum: 2
     },
     demo2: {
         target: 979,
-        numbers: [75, 100, 1, 9, 2, 8]
+        numbers: [75, 100, 1, 9, 2, 8],
+        largeNum: 2
+    },
+    demo3: {
+        target: 634,
+        numbers: [75, 8, 4, 9, 1, 3],
+        largeNum: 1
     }
 };
 let hardLargeNum = [12, 37, 62, 87];
@@ -32,12 +40,13 @@ let largeNum = [25, 50, 75, 100];
 let smallNum = [1 , 1 , 2 , 2 , 3 , 3 , 4 , 4 , 5 , 5 , 6 , 6 , 7 , 7 , 8 , 8 , 9 , 9 , 10 , 10];
 let selectedNum = [];
 let timeIsRunning = false;
+let currentDemo = 0;
 
 //random num generators 
 function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min) + min);
+    return Math.floor(Math.random() * (max - min + 1) + min);
 };
 function getRandomLarge(){
     let numSet;
@@ -57,6 +66,64 @@ function getRandomSmall(){
     smallNum.splice(i, 1);
     return result;
 };
+
+function generateDemo(){   
+    selectedNum = [];     
+    let demoTarget;
+    let demoNum;
+    let demoSelection = getRandomInt(1, 3);
+    switch(demoSelection){
+        case 1:                        
+            demoTarget = demoObj.demo1.target;
+            demoNum = demoObj.demo1.numbers;    
+            largeNumSelector.value = demoObj.demo1.largeNum;    
+            demoBox.innerHTML = 
+            `
+            10 x 6 = 60 </br>
+            60 x 6 = 360 </br>
+            75 - 25 = 50 </br>
+            50 - 7 = 43 </br>
+            360 + 43 = <b>403</b>
+            `;
+            break;
+        case 2:                        
+            demoTarget = demoObj.demo2.target;
+            demoNum = demoObj.demo2.numbers;    
+            largeNumSelector.value = demoObj.demo2.largeNum;    
+            demoBox.innerHTML = 
+            `
+            100 x 9 = 900 </br>
+            900 + 75 = 975 </br>
+            8 / 2 = 4 </br>
+            975 + 4 = <b>979</b>
+            `;
+            break;
+        case 3:                        
+            demoTarget = demoObj.demo3.target;
+            demoNum = demoObj.demo3.numbers;    
+            largeNumSelector.value = demoObj.demo3.largeNum;    
+            demoBox.innerHTML = 
+            `
+            75 x 8 = 600 </br>
+            9 x 4 = 36 </br>
+            3 - 1 = 2 </br>
+            36 - 2 = 34 </br>
+            600 + 34 = <b>634</b>
+            `;
+            break;
+    };
+    for(let i=0; i<demoNum.length; i++){
+        selectedNum.push(demoNum[i]);        
+    };
+    for(let i=0; i<numTableRow.cells.length; i++){
+        numTableRow.cells[i].innerHTML = selectedNum[i];        
+    };        
+    targetDisplay.innerHTML = demoTarget;      
+    demoBox.style.visibility = "visible";
+    setBtn.disabled = true;    
+    largeNumSelector.disabled = true;       
+    playBtn.disabled = true;
+}
 
 //timer
 let timer = timerDuration.value;
@@ -137,7 +204,9 @@ resetBtn.addEventListener('click', () => {
     };        
     setBtn.disabled = false;
     largeNumSelector.disabled = false;     
-    playBtn.disabled = true;        
+    playBtn.disabled = true;   
+    demoBox.style.visibility = "hidden";    
+    largeNumSelector.value = "0"; 
     changeTimerBtnStyle(false);        
     resetTimer();        
 });
@@ -174,23 +243,8 @@ timerBtn.addEventListener('click', () => {
   };
 });
 //fills with premade data for demo purposes
-demoBtn.addEventListener('click', () => { 
-    selectedNum = [];      
-    let demoTarget = demoObj.demo1.target;
-    let demoNum = demoObj.demo1.numbers;    
-    largeNumSelector.value = "2";
+demoBtn.addEventListener('click', generateDemo);
 
-    for(let i=0; i<demoNum.length; i++){
-        selectedNum.push(demoNum[i]);        
-    };
-    for(let i=0; i<numTableRow.cells.length; i++){
-        numTableRow.cells[i].innerHTML = selectedNum[i];        
-    };        
-    targetDisplay.innerHTML = demoTarget;        
-    setBtn.disabled = true;    
-    largeNumSelector.disabled = true;       
-    playBtn.disabled = true;
-});
 //timer controls
 setTimerBtn.addEventListener('click', () => {    
     let minutes, seconds;        
@@ -219,7 +273,7 @@ startTimerBtn.addEventListener('click', () => {
 });
 resetTimerBtn.addEventListener('click', () => {                
     changeTimerBtnStyle(false);        
-    resetTimer();        
+    resetTimer();            
 });
 //toggles hard mode
 hardMode.addEventListener('click', () =>{
