@@ -229,14 +229,14 @@ setBtn.addEventListener('click', () => {
 });
 //displays hidden items
 rulesBtn.addEventListener('click', () => {
-    if(rulesContainer.style.visibility == "visible"){
+    if(rulesContainer.style.visibility != "hidden"){
         rulesContainer.style.visibility = "hidden";        
     } else {
         rulesContainer.style.visibility = "visible";
     };
 });
 timerBtn.addEventListener('click', () => {
-  if(timerContainer.style.visibility == "visible"){
+  if(timerContainer.style.visibility != "hidden"){
     timerContainer.style.visibility = "hidden";
   } else {
     timerContainer.style.visibility = "visible";
