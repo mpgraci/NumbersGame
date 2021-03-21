@@ -33,6 +33,11 @@ const demoObj = {
         target: 634,
         numbers: [75, 8, 4, 9, 1, 3],
         largeNum: 1
+    },
+    demo4: {
+        target: 564,
+        numbers: [75, 25, 100, 5, 8, 8],
+        largeNum: 3
     }
 };
 let hardLargeNum = [12, 37, 62, 87];
@@ -71,7 +76,7 @@ function generateDemo(){
     selectedNum = [];     
     let demoTarget;
     let demoNum;
-    let demoSelection = getRandomInt(1, 3);
+    let demoSelection = getRandomInt(1, 4);
     switch(demoSelection){
         case 1:                        
             demoTarget = demoObj.demo1.target;
@@ -109,6 +114,19 @@ function generateDemo(){
             3 - 1 = 2 </br>
             36 - 2 = 34 </br>
             600 + 34 = <b>634</b>
+            `;
+            break;
+        case 4:                        
+            demoTarget = demoObj.demo4.target;
+            demoNum = demoObj.demo4.numbers;    
+            largeNumSelector.value = demoObj.demo4.largeNum;    
+            demoBox.innerHTML = 
+            `
+            75 x 8 = 600 </br>
+            5 x 8 = 40 </br>
+            600 - 40 = 560 </br>
+            100 / 25 = 4 
+            560 + 4 = <b>564</b>            
             `;
             break;
     };
