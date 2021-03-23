@@ -60,7 +60,7 @@ function getRandomLarge(){
     } else {
         numSet = largeNum;    
     }
-    let i = getRandomInt(0, numSet.length);
+    let i = getRandomInt(0, numSet.length - 1);
     let result = numSet[i];
     numSet.splice(i, 1);
     return result;
@@ -72,11 +72,12 @@ function getRandomSmall(){
     return result;
 };
 
+let lastDemo = 0;
 function generateDemo(){   
     selectedNum = [];     
     let demoTarget;
-    let demoNum;
-    let demoSelection = getRandomInt(1, 4);
+    let demoNum;    
+    let demoSelection = getRandomInt(1, 4);    
     switch(demoSelection){
         case 1:                        
             demoTarget = demoObj.demo1.target;
