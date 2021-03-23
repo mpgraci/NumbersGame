@@ -51,7 +51,7 @@ let currentDemo = 0;
 function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1) + min);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 function getRandomLarge(){
     let numSet;
@@ -65,10 +65,10 @@ function getRandomLarge(){
     numSet.splice(i, 1);
     return result;
 };
-function getRandomSmall(){
-    let i = getRandomInt(0, smallNum.length);
+function getRandomSmall(){      
+    let i = getRandomInt(0, smallNum.length - 1);    
     let result = smallNum[i];
-    smallNum.splice(i, 1);
+    smallNum.splice(i, 1);    
     return result;
 };
 
@@ -233,10 +233,10 @@ setBtn.addEventListener('click', () => {
     let largeNums = largeNumSelector.value;   
     selectedNum = []; 
     for(let i=0; i<largeNums;i++){
-        selectedNum.push(getRandomLarge());        
+        selectedNum.push(getRandomLarge());                
     };
     for(let i=largeNums; i<numTableRow.cells.length; i++){
-        selectedNum.push(getRandomSmall());        
+        selectedNum.push(getRandomSmall());                
     };
     for(let i=0; i<numTableRow.cells.length; i++){
         numTableRow.cells[i].innerHTML = selectedNum[i];        
