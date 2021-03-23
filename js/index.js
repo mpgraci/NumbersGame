@@ -266,6 +266,7 @@ demoBtn.addEventListener('click', generateDemo);
 //timer controls
 setTimerBtn.addEventListener('click', () => {    
     let minutes, seconds;        
+    // Comment
     minutes = parseInt(timerDuration.value / 60, 10)
     seconds = parseInt(timerDuration.value % 60, 10);
 
