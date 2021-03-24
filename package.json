@@ -1,6 +1,6 @@
 {
     "name": "numbers",
-    "version": "0.9.6",
+    "version": "0.9.7",
     "description": "Numbers game from Countdown",
     "author": "Marcus Graci <mpgraci@gmail.com>",
     "main": "app.js",

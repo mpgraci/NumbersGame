@@ -2,31 +2,31 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Numbers</title>        
-        <link rel="stylesheet" href="css/styles.css">        
+        <title>Numbers</title>
+        <link rel="stylesheet" href="css/styles.css">
     </head>
-    <body>
-          
-        <div id="container">  
-            <div id="timer-wrapper">   
-                
+    <body class="blue-grid">
+
+        <div id="container">
+            <div id="timer-wrapper" class="border">
+
                 <div id="timer">
                     00:30
-                </div>                                        
-            </br>
+                </div>
+            <br>
                 <div id = "timerSet-group">
-                    <input type="number" value="30" id="timer-duration"step="15">                
-                    <button id="timerSet-btn">&#10004;</button>  
+                    <input type="number" value="30" id="timer-duration"step="15">
+                    <button id="timerSet-btn">&#10004;</button>
                     <button id="resetTime-btn">&#8634;</button>
                 </div>
                 <div>
-                    <button id="startTime-btn">&#9658;</button>                                                         
-                </div>            
-            </div>          
-            <div class="center-box">
-                <div id="display-container">
-                    <div id="header-group">                
-                        <h1 id="target">000</h1>                 
+                    <button id="startTime-btn">&#9658;</button>
+                </div>
+            </div>
+            <div id="center-box">
+                <div id="display-container" class="border">
+                    <div id="header-group">
+                        <h1 id="target">000</h1>
                     </div>
                     <div id="table-container">
                         <table id="selectedNum-table">
@@ -38,12 +38,12 @@
                                 <td>0</td>
                                 <td>0</td>
                             </tr>
-                        </table>     
-                    </div>                       
-                </div>       
-                <div id="demo-box"></div>             
-                <div id="input-container">
-                    <div id="number-selection">                    
+                        </table>
+                    </div>
+                </div>
+                <div id="demo-box" class="border"></div>
+                <div id="input-container" class="border bottom">
+                    <div id="number-selection">
                         <label>Large Numbers: </label>
                         <select id="large-num-selector">
                             <option value="0">0</option>
@@ -51,64 +51,64 @@
                             <option value="2">2</option>
                             <option value="3">3</option>
                             <option value="4">4</option>
-                        </select>                                
+                        </select>
                         <button id="set-btn">Set</button>
-                    </div>                
+                    </div>
                     <div id="button-container">
-                        <button id="play-btn" disabled>Play</button>                
+                        <button id="play-btn" disabled>Play</button>
                         <button id="reset-btn">Reset</button>
-                    </div>  
-                </div>                                 
-            </div>        
-            <div id="rules-container">    
+                    </div>
+                </div>
+            </div>
+            <div id="rules-container" class="border">
                 <div id="rules-content">
-                <b>The Goal:</b> </br> </br>
-                Using the six given numbers, get as close to the target number as possible </br>
-            </br>
+                <b>The Goal:</b> <br> <br>
+                Using the six given numbers, get as close to the target number as possible <br>
+            <br>
                 <b>The Pieces:</b>
                 <ul>
-                <li>Random target number: 101 - 999</li>
-                <li>Four large numbers: 25, 50, 75, and 100</li> 
-                <li>Twenty small numbers: 1-10, two of each</li> 
-            </ul>
-            </br>
+                    <li>Random target number: 101 - 999</li>
+                    <li>Four large numbers: 25, 50, 75, and 100</li>
+                    <li>Twenty small numbers: 1-10, two of each</li>
+                </ul>
+            <br>
                 <b>How to Play:</b>
                 <ul>
-                <li>Choose how many large numbers to use (randomly selected). The remainder will be populated with small numbers (randomly selected)</li>
-                <li>You may only use the operations addition, subtraction, multiplication, and division </li>
-                <li>You may only use each number once </li>
-                <li>Each step must result in a positive integer (no negatives or fractions allowed) </li>
-                <li>Concatenation is not allowed ("2" and "3" can't be combined to create "23"</li>
-                <li>You do not have to use all of the six given numbers</li>
-            </ul>
-                </br>
+                    <li>Choose how many large numbers to use (randomly selected). The remainder will be populated with small numbers (randomly selected)</li>
+                    <li>You may only use the operations addition, subtraction, multiplication, and division </li>
+                    <li>You may only use each number once </li>
+                    <li>Each step must result in a positive integer (no negatives or fractions allowed) </li>
+                    <li>Concatenation is not allowed ("2" and "3" can't be combined to create "23"</li>
+                    <li>You do not have to use all of the six given numbers</li>
+                </ul>
+                <br>
                 <b>Scoring:</b>
                 <ul>
                     <li>10 points: Reach target exactly</li>
                     <li>7 points: 1-5 away from target </li>
                     <li>5 points: 6-10 away from target </li>
                 </ul>
-            </br>
+            <br>
             <b>Harde Mode:</b>
             <ul>
                 <li>Large numers: 12, 37, 62 and 87</li>
             </ul>
-            </div>   
-        </div>                
-        </div>  
-        <div id="button-div">
+            </div>
+        </div>
+        </div>
+        <div id="button-div" class="bottom">
             <div id="hardMode-div">
                 <input type="checkbox" id="hard-mode"><label>Hard Mode</label>
             </div>
-        </br>
+        <br>
             <div>
-                <button id="timer-btn">Timer</button>          
-                <button id="Rules-btn">Rules</button>          
-                <button id="demo-btn">Demo</button>                                   
+                <button id="timer-btn">Timer</button>
+                <button id="Rules-btn">Rules</button>
+                <button id="demo-btn">Demo</button>
             </div>
-        </div> 
+        </div>
         <script type="module">
-            import './js/index.js';            
+            import './js/index.js';
         </script>
     </body>
 </html>

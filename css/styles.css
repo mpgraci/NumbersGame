@@ -1,11 +1,10 @@
-body {    
-    font-size: 30px;    
+body {
+    font-size: 30px;
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
     padding: 0;
-    
+
     background: white;
-    background-image: linear-gradient(rgb(169, 235, 252) .1em, transparent .1em), linear-gradient(90deg, rgb(169, 235, 252) .1em, transparent .1em);
     background-size: 1.7em 1.7em;
 }
 label {
@@ -27,7 +26,7 @@ table td {
 button {
     width: 120px;
     font-size: 35px;
-    border-radius: 10px;    
+    border-radius: 10px;
     background-color: rgb(48,68,137);
     color: white;
     box-shadow: 5px 5px 2px 1px rgb(184, 184, 184);
@@ -36,32 +35,49 @@ button {
 button:disabled {
     background: #dddddd;
 }
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button {  
+/*always shows arrows on step input*/
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
    opacity: 1;
 }
-.center-box {      
-    margin: auto;   
-    margin-top: -30px;  
+.border {
+    border: 1px solid black;
+    border-radius: 10px;
+    box-shadow: 5px 5px 2px 1px rgb(184, 184, 184);
+}
+/*forces elements to bottom*/
+.bottom {
+    position: absolute; bottom: 0px;
+}
+/*backgroud grids*/
+.blue-grid {
+    background-image: linear-gradient(rgb(169, 235, 252) .1em, transparent .1em), linear-gradient(90deg, rgb(169, 235, 252) .1em, transparent .1em);
+}
+.red-grid {
+    background-image: linear-gradient(rgb(252, 169, 173) .1em, transparent .1em), linear-gradient(90deg, rgb(252, 169, 173) .1em, transparent .1em);
+}
+#center-box {
+    margin: auto;
+    margin-top: -30px;
+
     display: flex;
     flex-direction: column;
     align-self: center;
     justify-self: center;
-    text-align: center;            
+    text-align: center;
 }
 #container {
-    width: 100%;
-    height: 100%;
     margin-top: 50px;
+    flex-basis: 100%;
+    height: 100%;
     display: flex;
     align-items: flex-start;
-    justify-content: space-evenly;    
-    
+    justify-content: space-evenly;
 }
 #target {
     border: 2px solid black;
     border-radius: 5px;
-    width: 210px;
+    flex-basis: 210px;
     font-size: 110px;
     background-color: rgb(43,33,163);
     color: white;
@@ -69,39 +85,32 @@ input[type=number]::-webkit-outer-spin-button {
 #large-num-selector {
     font-size: 40px;
     border-radius: 5px;
-    margin-right: 20px;    
+    margin-right: 20px;
 }
 #display-container{
-    background-color: rgb(73,104,155);    
-    padding-bottom: 20px;
-    border: 1px solid black;
-    border-radius: 10px; 
-    margin-bottom: 20px;
     width: 650px;
-    box-shadow: 5px 5px 2px 1px rgb(184, 184, 184);
+    background-color: rgb(73,104,155);
+
+    padding-bottom: 20px;
+    margin-bottom: 20px;
 }
 #input-container {
-    background-color: rgb(255, 255, 255);    
+    width: 650px;
+    background-color: rgb(255, 255, 255);
     color: black;
-    padding-bottom: 20px;
-    border: 1px solid black;
-    border-radius: 10px; 
+
     padding-top: 20px;
     padding-bottom: 20px;
-    width: 650px;
-    position: absolute; bottom: 0px; 
-    margin-bottom: 20px;      
-    box-shadow: 5px 5px 2px 1px rgb(184, 184, 184);
-}
-#demo-box {        
-    padding: 20px;
-    border: 1px solid black;
-    border-radius: 10px; 
     margin-bottom: 20px;
+}
+#demo-box {
     width: 610px;
     height: 180px;
-    box-shadow: 5px 5px 2px 1px rgb(184, 184, 184);
     background-color: white;
+
+    padding: 20px;
+    margin-bottom: 20px;
+
     visibility: hidden;
 }
 #header-group {
@@ -118,30 +127,27 @@ input[type=number]::-webkit-outer-spin-button {
 }
 /*Timer*/
 #timer-wrapper {
+    flex-basis: 360px;
+    background-color: white;
     display: flex;
     flex-direction: column;
-    text-align: center;    
+    text-align: center;
     justify-self: left;
-    margin-top: -30px;        
-    margin-right: auto;
-    margin-left: 20px;    
-    visibility: visible;
-    
 
-    width: 360px;
-    background-color: white;
+    margin-top: -30px;
+    margin-right: auto;
+    margin-left: 20px;
     padding: 20px;
-    border: 1px solid black;
-    border-radius: 10px;     
-    box-shadow: 5px 5px 2px 1px rgb(184, 184, 184);   
+
+    visibility: visible;
 }
 #timer-wrapper label {
-    font-size: 40px;        
+    font-size: 40px;
 }
 #timer {
-    font-size: 90px;   
+    font-size: 90px;
     border: 2px solid black;
-    border-radius: 10px;                  
+    border-radius: 10px;
 }
 #startTime-btn {
     background-color: green;
@@ -149,57 +155,54 @@ input[type=number]::-webkit-outer-spin-button {
 }
 #timerSet-group {
     display: flex;
-    justify-content: center;        
+    justify-content: center;
 }
 #timer-duration {
     margin-bottom: 20px;
     margin-right: 5px;
     font-size: 40px;
-    width: 90px;    
-    border-radius: 5px;    
+    width: 90px;
+    border-radius: 5px;
 }
 #timerSet-btn {
     font-weight: bold;
     margin-right: 25px;
-    width: 50px;    
-    height: 50px;    
+    flex-basis: 50px;
+    height: 50px;
 }
 #resetTime-btn {
     font-weight: bold;
-    width: 50px; 
-    height: 50px;    
+    flex-basis: 50px;
+    height: 50px;
 }
 /*Rules*/
-#rules-container {    
+#rules-container {
+    font-size: 20px;
+    flex-basis: 360px;
+    height: 760px;
+    display: inline-block;
+    background-color: white;
     overflow-y: hidden;
-    text-align: left;         
-    justify-self: right;  
-    margin-top: -30px;   
+    text-align: left;
+    justify-self: right;
+
+    visibility: visible;
+
+    margin-top: -30px;
     margin-left: auto;
     margin-right: 20px;
-    visibility: visible;
-    
-    font-size: 20px;    
-    width: 360px;
-    height: 760px;
-    display: inline-block;    
-    background-color: white;
     padding-top: 20px;
     padding-left: 20px;
     padding-bottom: 20px;
-    border: 1px solid black;
-    border-radius: 10px;    
-    box-shadow: 5px 5px 2px 1px rgb(184, 184, 184);
 }
 #rules-content {
     overflow-y: scroll;
-    width: 100%;    
+    flex-basis: 100%;
     height: 100%;
 }
 /*Bottom panel*/
 #button-div {
-    position: absolute; bottom: 0px; 
-    margin: 20px;    
+    margin: 20px;
 }
 #hard-mode {
     width: 30px;
