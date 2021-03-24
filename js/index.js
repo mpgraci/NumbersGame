@@ -217,7 +217,6 @@ resetBtn.addEventListener('click', () => {
     largeNumSelector.disabled = false;
     playBtn.disabled = true;
     demoBox.style.visibility = "hidden";
-    largeNumSelector.value = "0";
     changeTimerBtnStyle(false);
     resetTimer();
 });
