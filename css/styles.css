@@ -22,6 +22,7 @@ table td {
     background-color: rgb(48,68,137);
     color: white;
     font-weight: bold;
+    height: 60px;
 }
 button {
     width: 120px;
@@ -40,6 +41,30 @@ input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
    opacity: 1;
 }
+/*drag n drop*/
+.fill {
+    position: relative;
+    cursor: pointer;
+    width: 60px;
+    height: 60px;
+}
+.empty {
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+}
+.hold {
+    border: 1px solid white;
+    border-radius: 5px;
+}
+.hovered {
+    border: 2px solid white;
+    border-style: dashed;
+}
+.invisible {
+    display: none;
+}
+/*end drag n drop*/
 .border {
     border: 1px solid black;
     border-radius: 10px;
@@ -51,10 +76,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 /*backgroud grids*/
 .blue-grid {
-    background-image: linear-gradient(rgb(169, 235, 252) .1em, transparent .1em), linear-gradient(90deg, rgb(169, 235, 252) .1em, transparent .1em);
-}
-.red-grid {
-    background-image: linear-gradient(rgb(252, 169, 173) .1em, transparent .1em), linear-gradient(90deg, rgb(252, 169, 173) .1em, transparent .1em);
+    background-image: linear-gradient(rgb(169, 235, 252) .1em, transparent .1em);
 }
 #center-box {
     margin: auto;
@@ -91,6 +113,7 @@ input[type=number]::-webkit-outer-spin-button {
     width: 650px;
     background-color: rgb(73,104,155);
 
+    padding-top: 30px;
     padding-bottom: 20px;
     margin-bottom: 20px;
 }
@@ -102,6 +125,9 @@ input[type=number]::-webkit-outer-spin-button {
     padding-top: 20px;
     padding-bottom: 20px;
     margin-bottom: 20px;
+}
+#cons-btn {
+    width: 200px;
 }
 #demo-box {
     width: 610px;
@@ -118,7 +144,7 @@ input[type=number]::-webkit-outer-spin-button {
     display: flex;
     justify-content: center;
 }
-#table-container {
+.table-container {
     display: flex;
     justify-content: center;
 }

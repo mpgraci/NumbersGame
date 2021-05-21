@@ -2,12 +2,27 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Numbers</title>
+        <title>Letters</title>
         <link rel="stylesheet" href="css/styles.css">
+        <script>
+            function allowDrop(ev) {
+              ev.preventDefault();
+            }
+
+            function drag(ev) {
+              ev.dataTransfer.setData("text", ev.target.id);
+            }
+
+            function drop(ev) {
+              ev.preventDefault();
+              var data = ev.dataTransfer.getData("text");
+              ev.target.appendChild(document.getElementById(data));
+            }
+        </script>
     </head>
     <body class="blue-grid">
-
         <div id="container">
+            <!--Timer-->
             <div id="timer-wrapper" class="border">
 
                 <div id="timer">
@@ -23,92 +38,83 @@
                     <button id="startTime-btn">&#9658;</button>
                 </div>
             </div>
+            <!--Main Display-->
             <div id="center-box">
                 <div id="display-container" class="border">
-                    <div id="header-group">
-                        <h1 id="target">000</h1>
+                    <div class="table-container">
+                        <table id="letters-table">
+                            <tr id="lettersTbl-row">
+                                <td class="empty"><div id="0" class="fill" draggable="true">A</div></td>
+                                <td class="empty"><div id="1" class="fill" draggable="true">B</div></td>
+                                <td class="empty"><div id="2" class="fill" draggable="true">C</div></td>
+                                <td class="empty"><div id="3" class="fill" draggable="true">D</div></td>
+                                <td class="empty"><div id="4" class="fill" draggable="true">E</div></td>
+                                <td class="empty"><div id="5" class="fill" draggable="true">F</div></td>
+                                <td class="empty"><div id="6" class="fill" draggable="true">G</div></td>
+                                <td class="empty"><div id="7" class="fill" draggable="true">H</div></td>
+                                <td class="empty"><div id="8" class="fill" draggable="true">I</div></td>
+                            </tr>
+                        </table>
                     </div>
-                    <div id="table-container">
-                        <table id="selectedNum-table">
-                            <tr id="numTable-row">
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
+                    <div class="table-container">
+                        <table id="word-table">
+                            <tr id="wordTbl-row">
+                                <td class="empty"></td>
+                                <td class="empty"></td>
+                                <td class="empty"></td>
+                                <td class="empty"></td>
+                                <td class="empty"></td>
+                                <td class="empty"></td>
+                                <td class="empty"></td>
+                                <td class="empty"></td>
+                                <td class="empty"></td>
                             </tr>
                         </table>
                     </div>
                 </div>
-                <div id="demo-box" class="border"></div>
-                <div id="input-container" class="border bottom">
-                    <div id="number-selection">
-                        <label>Large Numbers: </label>
-                        <select id="large-num-selector">
-                            <option value="0">0</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                        </select>
-                        <button id="set-btn">Set</button>
+                <!--Input-->
+                <div id="input-container" class="border">
+                    <div>
+                        <button id="cons-btn">Consonant</button>
+                        <button id="vowel-btn">Vowel</button>
                     </div>
                     <div id="button-container">
-                        <button id="play-btn" disabled>Play</button>
                         <button id="reset-btn">Reset</button>
                     </div>
                 </div>
             </div>
+            <!--Rules-->
             <div id="rules-container" class="border">
                 <div id="rules-content">
                 <b>The Goal:</b> <br> <br>
-                Using the six given numbers, get as close to the target number as possible <br>
-            <br>
-                <b>The Pieces:</b>
-                <ul>
-                    <li>Random target number: 101 - 999</li>
-                    <li>Four large numbers: 25, 50, 75, and 100</li>
-                    <li>Twenty small numbers: 1-10, two of each</li>
-                </ul>
+                Using the 9 given letters, spell the longest word possible<br>
             <br>
                 <b>How to Play:</b>
                 <ul>
-                    <li>Choose how many large numbers to use (randomly selected). The remainder will be populated with small numbers (randomly selected)</li>
-                    <li>You may only use the operations addition, subtraction, multiplication, and division </li>
-                    <li>You may only use each number once </li>
-                    <li>Each step must result in a positive integer (no negatives or fractions allowed) </li>
-                    <li>Concatenation is not allowed ("2" and "3" can't be combined to create "23"</li>
-                    <li>You do not have to use all of the six given numbers</li>
+                    <li>Choose either a vowel or consonant to add to the board. Do this until there are 9 letters.</li>
+                    <li>You must have at least 3 vowels and at least 4 consonants</li>
+                    <li>Drag the letters to the bottom row to form a word</li>
+                    <li>Words must be found in the Oxford Dictionary of English, as well as accepted forms of them that may not be explicitly listed (plurals, inflectiosn of verbs, superlatvies of adjectives, etc.</li>
+                    <li>No proper nouns allowed</li>
+                    <li>No hyphenated words allowed</li>
                 </ul>
                 <br>
                 <b>Scoring:</b>
                 <ul>
-                    <li>10 points: Reach target exactly</li>
-                    <li>7 points: 1-5 away from target </li>
-                    <li>5 points: 6-10 away from target </li>
+                    <li>Only the player with the longest word scores</li>
+                    <li>If tied, each tied player scores</li>
+                    <li>1 point for each letter</li>
                 </ul>
-            <br>
-            <b>Harde Mode:</b>
-            <ul>
-                <li>Large numers: 12, 37, 62 and 87</li>
-            </ul>
             </div>
         </div>
         </div>
         <div id="button-div" class="bottom">
-            <div id="hardMode-div">
-                <input type="checkbox" id="hard-mode"><label>Hard Mode</label>
-            </div>
-        <br>
             <div>
                 <button id="timer-btn">Timer</button>
                 <button id="Rules-btn">Rules</button>
-                <button id="demo-btn">Demo</button>
             </div>
         </div>
-        <script type="module">
-            import './js/index.js';
-        </script>
+        <script src="js/index.js"></script>
+        <script src="js/dragndrop.js"></script>
     </body>
 </html>
